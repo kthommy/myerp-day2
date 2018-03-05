@@ -3,5 +3,21 @@
 {% block title %}{{ 'worker.index.title' | trans }} - {{ parent() }}{% endblock %}
 
 {% block body %}
-{{ 'worker.index.placeholder' | trans }}
+<table>
+    <thead>
+        <tr>
+            <th>{{ 'worker.field.lastName' | trans }}</th>
+            <th>{{ 'worker.field.firstName' | trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for worker in workers %}
+        <tr>
+            <td>{{ worker.lastName }}</td>
+            <td>{{ worker.firstName }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}

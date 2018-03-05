@@ -9,4 +9,6 @@ main:
 worker:
     index:
         title: Mes employés
-        placeholder: (future liste des employés)
+    field:
+        lastName: Nom
+        firstName: Prénom
