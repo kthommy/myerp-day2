@@ -1,0 +1,12 @@
+base:
+    title: Mon ERP
+
+main:
+    index:
+        title: Accueil
+        welcome: Bienvenue sur mon super ERP, %name% !
+
+worker:
+    index:
+        title: Mes employés
+        placeholder: (future liste des employés)

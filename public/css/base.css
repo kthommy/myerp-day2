@@ -1,0 +1,15 @@
+.erp {
+  background: #ccc;
+}
+
+.navbar__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+  .navbar__link {
+    color: inherit;
+    display: block;
+    padding: 1rem;
+  }
