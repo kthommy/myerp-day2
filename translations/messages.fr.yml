@@ -9,6 +9,24 @@ main:
 worker:
     index:
         title: Mes employés
+    create:
+        title: Ajouter un employé
     field:
         lastName: Nom
         firstName: Prénom
+        jobTitle: Poste
+        jobTitleChoices:
+            dev: Développeur
+            trainee: Stagiaire
+            cook: Cuisinier
+        workingTime: Heures travaillées
+        wage: Salaire horaire
+        startDate: Date d'embauche
+    action:
+        create: Ajouter un employé
+        edit: Éditer
+        delete: Supprimer
+    flash:
+        saved: Employé enregistré
+        updated: Employé mis à jour
+        removed: Employé supprimé

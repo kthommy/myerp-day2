@@ -54,6 +54,18 @@ class Worker
     private $wage = '000.00';
     
     /**
+     * @ORM\Column(type="date")
+     * 
+     * @var \DateTime
+     */
+    private $startDate;
+    
+    public function __construct()
+    {
+        $this->startDate = new \DateTime();
+    }
+    
+    /**
      * @return int
      */
     public function getId(): int
@@ -152,6 +164,25 @@ class Worker
     public function setWage(string $wage): Worker
     {
         $this->wage = $wage;
+        
+        return $this;
+    }
+    
+    /**
+     * @return \DateTime
+     */
+    public function getStartDate(): \DateTime
+    {
+        return $this->startDate;
+    }
+    
+    /**
+     * @param \DateTime $startDate
+     * @return Worker
+     */
+    public function setStartDate(\DateTime $startDate): Worker
+    {
+        $this->startDate = $startDate;
         
         return $this;
     }
