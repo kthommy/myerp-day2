@@ -7,7 +7,7 @@
 {% block body %}
 <h1>{{ worker.lastName }} {{ worker.firstName }}</h1>
 <p>
-    {{ "worker.field.jobTitleChoices.#{worker.jobTitle}" | trans }}
+    {{ worker.job ? worker.job.title : '' }}
     {{ 'worker.read.since' | trans({
         '%date%': worker.startDate | date('d/m/Y'),
     }) }}
@@ -15,7 +15,7 @@
 <p>
     {{ 'worker.read.contract' | trans({
         '%workingTime%': worker.workingTime,
-        '%wage%': worker.wage, 
+        '%wage%': worker.job ? worker.job.wage : '',
     }) }}
 </p>
 {% endblock %}

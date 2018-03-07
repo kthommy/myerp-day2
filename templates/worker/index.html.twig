@@ -15,7 +15,7 @@
                 {{ 'worker.field.lastName' | trans }},
                 {{ 'worker.field.firstName' | trans | lower }}
             </th>
-            <th>{{ 'worker.field.jobTitle' | trans }}</th>
+            <th>{{ 'worker.field.job' | trans }}</th>
             <th></th>
         </tr>
     </thead>
@@ -28,9 +28,7 @@
                     {{ worker.lastName }} {{ worker.firstName }}
                 </a>
             </td>
-            <td>
-                {{ "worker.field.jobTitleChoices.#{worker.jobTitle}" | trans }}
-            </td>
+            <td>{{ worker.job ? worker.job.title : '' }}</td>
             <td>
                 <a
                     class="worker__link"

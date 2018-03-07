@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ 'job.index.title' | trans }} - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<table>
+    <thead>
+        <tr>
+            <th>{{ 'job.field.title' | trans }}</th>
+            <th>{{ 'job.field.summary' | trans }}</th>
+            <th>{{ 'job.field.wage' | trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job.title }}</td>
+            <td>{{ job.summary }}</td>
+            <td>{{ 'job.index.wage' | trans({'%wage%': job.wage}) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

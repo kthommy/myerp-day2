@@ -33,13 +33,6 @@ class Worker
     private $firstName = '';
     
     /**
-     * @ORM\Column(type="string", length=255)
-     * 
-     * @var string
-     */
-    private $jobTitle = '';
-    
-    /**
      * @ORM\Column(type="decimal", precision=3, scale=1)
      * 
      * @var string
@@ -47,11 +40,11 @@ class Worker
     private $workingTime = '00.0';
     
     /**
-     * @ORM\Column(type="decimal", precision=5, scale=2)
+     * @ORM\ManyToOne(targetEntity="Job")
      * 
-     * @var string
+     * @var Job
      */
-    private $wage = '000.00';
+    private $job;
     
     /**
      * @ORM\Column(type="date")
@@ -114,25 +107,6 @@ class Worker
     /**
      * @return string
      */
-    public function getJobTitle(): string
-    {
-        return $this->jobTitle;
-    }
-    
-    /**
-     * @param string $jobTitle
-     * @return Worker
-     */
-    public function setJobTitle(string $jobTitle): Worker
-    {
-        $this->jobTitle = $jobTitle;
-        
-        return $this;
-    }
-    
-    /**
-     * @return string
-     */
     public function getWorkingTime(): string
     {
         return $this->workingTime;
@@ -145,25 +119,6 @@ class Worker
     public function setWorkingTime(string $workingTime): Worker
     {
         $this->workingTime = $workingTime;
-        
-        return $this;
-    }
-    
-    /**
-     * @return string
-     */
-    public function getWage(): string
-    {
-        return $this->wage;
-    }
-    
-    /**
-     * @param string $wage
-     * @return Worker
-     */
-    public function setWage(string $wage): Worker
-    {
-        $this->wage = $wage;
         
         return $this;
     }
@@ -183,6 +138,25 @@ class Worker
     public function setStartDate(\DateTime $startDate): Worker
     {
         $this->startDate = $startDate;
+        
+        return $this;
+    }
+    
+    /**
+     * @return Job|null
+     */
+    public function getJob(): ? Job
+    {
+        return $this->job;
+    }
+    
+    /**
+     * @param Job $job
+     * @return Worker
+     */
+    public function setJob(Job $job): Worker
+    {
+        $this->job = $job;
         
         return $this;
     }
