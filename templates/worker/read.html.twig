@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ worker.lastName }} {{ worker.firstName }} - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<h1>{{ worker.lastName }} {{ worker.firstName }}</h1>
+<p>
+    {{ "worker.field.jobTitleChoices.#{worker.jobTitle}" | trans }}
+    {{ 'worker.read.since' | trans({
+        '%date%': worker.startDate | date('d/m/Y'),
+    }) }}
+</p>
+<p>
+    {{ 'worker.read.contract' | trans({
+        '%workingTime%': worker.workingTime,
+        '%wage%': worker.wage, 
+    }) }}
+</p>
+{% endblock %}

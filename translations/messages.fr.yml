@@ -9,6 +9,11 @@ main:
 worker:
     index:
         title: Mes employés
+    read:
+        since: depuis le %date%
+        contract: >
+            sur une base de %workingTime% heures par semaine à %wage%€ de
+            l'heure.
     create:
         title: Ajouter un employé
     field:

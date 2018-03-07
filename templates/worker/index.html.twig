@@ -11,26 +11,42 @@
 <table>
     <thead>
         <tr>
-            <th>{{ 'worker.field.lastName' | trans }}</th>
-            <th>{{ 'worker.field.firstName' | trans }}</th>
-            <th colspan="2">{{ 'worker.field.jobTitle' | trans }}</th>
+            <th>
+                {{ 'worker.field.lastName' | trans }},
+                {{ 'worker.field.firstName' | trans | lower }}
+            </th>
+            <th>{{ 'worker.field.jobTitle' | trans }}</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         {% for worker in workers %}
         <tr>
-            <td>{{ worker.lastName }}</td>
-            <td>{{ worker.firstName }}</td>
+            <td>
+                <a
+                    href="{{ path('app_worker_read', {id: worker.id}) }}">
+                    {{ worker.lastName }} {{ worker.firstName }}
+                </a>
+            </td>
             <td>
                 {{ "worker.field.jobTitleChoices.#{worker.jobTitle}" | trans }}
             </td>
             <td>
-                <a class="worker__link" href="{{ path('app_worker_edit', {id: worker.id}) }}">
+                <a
+                    class="worker__link"
+                    href="{{ path('app_worker_edit', {id: worker.id}) }}">
                     {{ 'worker.action.edit' | trans }}
                 </a>
-                <a class="worker__link" href="{{ path('app_worker_delete', {id: worker.id}) }}">
-                    {{ 'worker.action.delete' | trans }}
-                </a>
+                {{ form_start(form, {
+                    attr: {class: 'worker__form'},
+                    action: path('app_worker_delete', {id: worker.id}),
+                }) }}
+                    <input
+                        class="worker__link"
+                        type="submit"
+                        value="{{ 'worker.action.delete' | trans }}"
+                    />
+                {{ form_end(form) }}
             </td>
         </tr>
         {% endfor %}

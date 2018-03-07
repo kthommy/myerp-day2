@@ -21,11 +21,28 @@ class WorkerController extends Controller
      * @Route("/")
      * @Method("GET")
      */
-    public function index(WorkerRepository $repository)
+    public function index(WorkerRepository $repository): Response
     {
+        $form = $this
+            ->createFormBuilder(null, ['method' => 'DELETE'])
+            ->getForm();
+        
         return $this->render('worker/index.html.twig', [
             'workers' => $repository->findAll(),
+            'form' => $form->createView(),
         ]);
+    }
+    
+    /**
+     * @Route("/read/{id}")
+     * @Method("GET")
+     * 
+     * @param Worker $worker
+     * @return Response
+     */
+    public function read(Worker $worker): Response
+    {
+        return $this->render('worker/read.html.twig', ['worker' => $worker]);
     }
     
     /**
@@ -84,6 +101,7 @@ class WorkerController extends Controller
     
     /**
      * @Route("/delete/{id}")
+     * @Method("DELETE")
      * 
      * @param Worker $worker
      * @param EntityManagerInterface $manager
