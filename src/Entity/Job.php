@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\JobRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=JobRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Job
 {
@@ -39,6 +42,27 @@ class Job
      * @var string
      */
     private $wage = '000.00';
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Worker", mappedBy="job")
+     * 
+     * @var Collection
+     */
+    private $workers;
+    
+    public function __construct()
+    {
+        $this->workers = new ArrayCollection();
+    }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function correctTitle()
+    {
+        $this->title = ucfirst($this->title)[0] .
+            strtolower(substr($this->title, 1));
+    }
     
     /**
      * @return int
@@ -101,6 +125,36 @@ class Job
     public function setWage(string $wage): Job
     {
         $this->wage = $wage;
+        
+        return $this;
+    }
+    
+    /**
+     * @return Collection
+     */
+    public function getWorkers(): Collection
+    {
+        return $this->workers;
+    }
+    
+    /**
+     * @param Worker $worker
+     * @return Job
+     */
+    public function addWorker(Worker $worker): Job
+    {
+        $this->workers->add($worker);
+        
+        return $this;
+    }
+    
+    /**
+     * @param Worker $worker
+     * @return Job
+     */
+    public function removeWorker(Worker $worker): Job
+    {
+        $this->workers->removeElement($worker);
         
         return $this;
     }

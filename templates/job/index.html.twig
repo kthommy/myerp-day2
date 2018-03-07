@@ -11,6 +11,7 @@
             <th>{{ 'job.field.title' | trans }}</th>
             <th>{{ 'job.field.summary' | trans }}</th>
             <th>{{ 'job.field.wage' | trans }}</th>
+            <th>Employés concernés</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,11 @@
             <td>{{ job.title }}</td>
             <td>{{ job.summary }}</td>
             <td>{{ 'job.index.wage' | trans({'%wage%': job.wage}) }}</td>
+            <td>
+                {% for worker in job.workers %}
+                {{  worker.lastName }} {{ worker.firstName }}{{ loop.last ? '' : ','}}
+                {% endfor %}
+            </td>
         </tr>
         {% endfor %}
     </tbody>

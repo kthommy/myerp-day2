@@ -40,7 +40,7 @@ class Worker
     private $workingTime = '00.0';
     
     /**
-     * @ORM\ManyToOne(targetEntity="Job")
+     * @ORM\ManyToOne(targetEntity="Job", inversedBy="workers")
      * 
      * @var Job
      */

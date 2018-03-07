@@ -10,7 +10,7 @@ class JobFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $titles = ['Cuisinier', 'Marchand', 'Aventurier', 'Clown', 'Voleur'];
+        $titles = ['Cuisinier', 'marcHAnd', 'Aventurier', 'clOWn', 'Voleur'];
         
         foreach ($titles as $i => $title) {
             $job = (new Job())
