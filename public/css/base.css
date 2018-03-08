@@ -13,3 +13,13 @@
     display: block;
     padding: 1rem;
   }
+
+.flash {
+  border-bottom: 1px solid;
+  margin: 0;
+  padding: 1rem;
+}
+  .flash--error {
+    background: #b88;
+    color: #300;
+  }
