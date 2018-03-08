@@ -15,37 +15,37 @@ class User implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Id
      */
-    private $id;
+    private $id = 0;
 
     /**
      * @var string[]
      * @ORM\Column(type="json_array")
      *
      */
-    private $roles;
+    private $roles = ['ROLE_USER'];
     
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    private $password = '';
     
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
      */
-    private $salt;
+    private $salt = '';
     
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
      */
-    private $username;
+    private $username = '';
     
     /**
      * @return string[]
      */
-    public function getRoles()
+    public function getRoles(): array
     {
         return $this->roles;
     }
@@ -53,15 +53,17 @@ class User implements UserInterface
     /**
      * @param string[] $roles
      */
-    public function setRoles($roles)
+    public function setRoles(array $roles): UserInterface
     {
         $this->roles = $roles;
+        
+        return $this;
     }
     
     /**
      * @return mixed
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -69,15 +71,17 @@ class User implements UserInterface
     /**
      * @param mixed $password
      */
-    public function setPassword($password)
+    public function setPassword(string $password): UserInterface
     {
         $this->password = $password;
+        
+        return $this;
     }
     
     /**
      * @return mixed
      */
-    public function getSalt()
+    public function getSalt(): string
     {
         return $this->salt;
     }
@@ -85,15 +89,17 @@ class User implements UserInterface
     /**
      * @param mixed $salt
      */
-    public function setSalt($salt)
+    public function setSalt(string $salt): UserInterface
     {
         $this->salt = $salt;
+        
+        return $this;
     }
     
     /**
      * @return mixed
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -101,9 +107,11 @@ class User implements UserInterface
     /**
      * @param mixed $username
      */
-    public function setUsername($username)
+    public function setUsername(string $username): UserInterface
     {
         $this->username = $username;
+        
+        return $this;
     }
     
     public function eraseCredentials()
