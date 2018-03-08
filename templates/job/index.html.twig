@@ -5,24 +5,35 @@
 {% endblock %}
 
 {% block body %}
-<table>
+<table class="table">
     <thead>
         <tr>
-            <th>{{ 'job.field.title' | trans }}</th>
-            <th>{{ 'job.field.summary' | trans }}</th>
-            <th>{{ 'job.field.wage' | trans }}</th>
-            <th>Employés concernés</th>
+            <th class="table__cell table__cell--head">
+                {{ 'job.field.title' | trans }}
+            </th>
+            <th class="table__cell table__cell--head">
+                {{ 'job.field.summary' | trans }}
+            </th>
+            <th class="table__cell table__cell--head">
+                {{ 'job.field.wage' | trans }}
+            </th>
+            <th class="table__cell table__cell--head">
+                {{ 'job.field.workers' | trans }}
+            </th>
         </tr>
     </thead>
     <tbody>
         {% for job in jobs %}
         <tr>
-            <td>{{ job.title }}</td>
-            <td>{{ job.summary }}</td>
-            <td>{{ 'job.index.wage' | trans({'%wage%': job.wage}) }}</td>
-            <td>
+            <td class="table__cell">{{ job.title }}</td>
+            <td class="table__cell">{{ job.summary }}</td>
+            <td class="table__cell">
+                {{ 'job.index.wage' | trans({'%wage%': job.wage}) }}
+            </td>
+            <td class="table__cell">
                 {% for worker in job.workers %}
-                {{  worker.lastName }} {{ worker.firstName }}{{ loop.last ? '' : ','}}
+                {{  worker.lastName }}
+                {{ worker.firstName }}{{ not loop.last ? ','}}
                 {% endfor %}
             </td>
         </tr>

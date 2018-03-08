@@ -40,3 +40,4 @@ job:
         title: Titre
         summary: Description
         wage: Salaire horaire
+        workers: Employés concernés
