@@ -1,24 +1,40 @@
 .erp {
   background: #ccc;
-  line-height: 1.5rem;
+  font: 14px/1.5rem sans-serif;
+  margin: 0;
+  min-height: 100vh;
 }
 
 .navbar__list {
+  background: #333;
+  color: #ccc;
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
 }
   .navbar__link {
+    box-sizing: border-box;
+    color: inherit;
     display: block;
+    height: 3.5rem;
     padding: 1rem;
+    text-decoration: none;
   }
+    .navbar__link:hover, .navbar__link--active {
+      border-bottom: 3px solid;
+      color: #fff;
+    }
 
 .flash {
   border-bottom: 1px solid;
   margin: 0;
   padding: 1rem;
 }
+  .flash--success {
+    background: #8b8;
+    color: #030;
+  }
   .flash--error {
     background: #b88;
     color: #300;
