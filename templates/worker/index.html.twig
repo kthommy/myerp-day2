@@ -5,42 +5,46 @@
 {% endblock %}
 
 {% block body %}
-<a class="worker__link" href="{{ path('app_worker_create') }}">
+<a class="erp__link erp__link--main" href="{{ path('app_worker_create') }}">
     {{ 'worker.action.create' | trans }}
 </a>
-<table>
+<table class="table">
     <thead>
         <tr>
-            <th>
+            <th class="table__cell table__cell--head">
                 {{ 'worker.field.lastName' | trans }},
                 {{ 'worker.field.firstName' | trans | lower }}
             </th>
-            <th>{{ 'worker.field.job' | trans }}</th>
-            <th></th>
+            <th class="table__cell table__cell--head">
+                {{ 'worker.field.job' | trans }}
+            </th>
+            <th class="table__cell table__cell--head">
+                {{ 'worker.action.row' | trans }}
+            </th>
         </tr>
     </thead>
     <tbody>
         {% for worker in workers %}
         <tr>
-            <td>
+            <td class="table__cell">
                 <a
                     href="{{ path('app_worker_read', {id: worker.id}) }}">
                     {{ worker.lastName }} {{ worker.firstName }}
                 </a>
             </td>
-            <td>{{ worker.job ? worker.job.title : '' }}</td>
-            <td>
+            <td class="table__cell">{{ worker.job ? worker.job.title }}</td>
+            <td class="table__cell">
                 <a
-                    class="worker__link"
+                    class="erp__link"
                     href="{{ path('app_worker_edit', {id: worker.id}) }}">
                     {{ 'worker.action.edit' | trans }}
                 </a>
                 {{ form_start(form, {
-                    attr: {class: 'worker__form'},
+                    attr: {class: 'table__form'},
                     action: path('app_worker_delete', {id: worker.id}),
                 }) }}
                     <input
-                        class="worker__link"
+                        class="erp__link"
                         type="submit"
                         value="{{ 'worker.action.delete' | trans }}"
                     />
@@ -50,9 +54,4 @@
         {% endfor %}
     </tbody>
 </table>
-{% endblock %}
-
-{% block stylesheets %}
-{{ parent() }}
-<link rel="stylesheet" href="{{ asset('css/worker.css') }}" />
 {% endblock %}

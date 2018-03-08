@@ -23,6 +23,7 @@ worker:
         workingTime: Heures travaillées
         startDate: Date d'embauche
     action:
+        row: Actions
         create: Ajouter un employé
         edit: Éditer
         delete: Supprimer

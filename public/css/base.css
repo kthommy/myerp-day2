@@ -1,9 +1,23 @@
 .erp {
-  background: #ccc;
   font: 14px/1.5rem sans-serif;
   margin: 0;
   min-height: 100vh;
 }
+  .erp__link {
+    background: #ddd;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: inline-block;
+    font: 1rem/1.5rem sans-serif;
+    padding: 1rem;
+    text-decoration: none;
+  }
+    .erp__link--main {
+      background: #8ab;
+      color: #003;
+      margin: 1rem;
+    }
 
 .navbar__list {
   background: #333;
@@ -38,4 +52,28 @@
   .flash--error {
     background: #b88;
     color: #300;
+  }
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+  .table__cell {
+    border-bottom: 1px solid #888;
+    text-align: left;
+    padding: 0 1rem;
+  }
+    .table__cell + .table__cell {
+      border-left: 1px solid #888;
+    }
+    .table__cell--head {
+      background: #ddd;
+      border-width: 3px;
+      box-sizing: border-box;
+      font-weight: normal;
+      height: 3.5rem;
+      padding: 1rem;
+    }
+  .table__form {
+    display: inline;
   }
