@@ -17,7 +17,7 @@ security:
             security: false
         login:
             pattern: ^/login$
-            security: false
+            anonymous: true
         main:
             provider: in_database
             form_login:

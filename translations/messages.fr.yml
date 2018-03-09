@@ -48,4 +48,5 @@ security:
         username: Utilisateur
         password: Mot de passe
     action:
-        logIn: Se connecter
+        login: Se connecter
+        logout: Se déconnecter
