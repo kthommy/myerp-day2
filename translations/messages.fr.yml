@@ -9,6 +9,7 @@ main:
 worker:
     index:
         title: Mes employés
+        actions: Actions
     read:
         since: depuis le %date%
         contract: >
@@ -23,7 +24,6 @@ worker:
         workingTime: Heures travaillées
         startDate: Date d'embauche
     action:
-        row: Actions
         create: Ajouter un employé
         edit: Éditer
         delete: Supprimer
@@ -41,3 +41,10 @@ job:
         summary: Description
         wage: Salaire horaire
         workers: Employés concernés
+
+security:
+    field:
+        username: Utilisateur
+        password: Mot de passe
+    action:
+        logIn: Se connecter

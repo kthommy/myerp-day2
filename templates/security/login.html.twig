@@ -6,12 +6,12 @@
 {% endif %}
 
 <form action="{{ path('app_security_logincheck') }}" method="POST">
-    <label for="[login]username">Username</label>
+    <label for="[login]username">{{ 'security.field.username' | trans }}</label>
     <input class="form-control" type="text" name="username" id="username">
     
-    <label for="[login]password">Password</label>
+    <label for="[login]password">{{ 'security.field.password' | trans }}</label>
     <input class="form-control" type="password" name="password" id="password">
     
-    <button type="submit">Log In</button>
+    <button type="submit">{{ 'security.action.logIn' | trans }}</button>
 </form>
 {% endblock %}
