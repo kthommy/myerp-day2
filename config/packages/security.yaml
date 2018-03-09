@@ -30,5 +30,5 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login_check, requires_channel: https, roles: IS_AUTHENTICATED_FULLY}
-        - { path: ^/worker/delete, roles: ROLE_MANAGER }
+        - { path: ^/worker/(create|delete), roles: ROLE_MANAGER }
         - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED} # catch all

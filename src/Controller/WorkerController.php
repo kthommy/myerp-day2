@@ -82,6 +82,13 @@ class WorkerController extends Controller
         Request $request,
         EntityManagerInterface $manager
     ): Response {
+        if (
+            !$this->isGranted('ROLE_MANAGER') &&
+            $this->getUser()->getWorker() !== $worker
+        ) {
+            throw $this->createAccessDeniedException('User is not a manager.');
+        }
+        
         $form = $this->createForm(WorkerType::class, $worker);
         
         $form->handleRequest($request);

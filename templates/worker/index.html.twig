@@ -36,11 +36,13 @@
             </td>
             <td class="table__cell">{{ worker.job ? worker.job.title }}</td>
             <td class="table__cell">
+                {% if is_granted('ROLE_MANAGER') or app.user.worker == worker %}
                 <a
                     class="erp__link"
                     href="{{ path('app_worker_edit', {id: worker.id}) }}">
                     {{ 'worker.action.edit' | trans }}
                 </a>
+                {% endif %}
                 {% if is_granted('ROLE_MANAGER') %}
                 {{ form_start(form, {
                     attr: {class: 'table__form'},
