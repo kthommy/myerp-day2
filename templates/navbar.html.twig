@@ -1,12 +1,8 @@
 {% set active = app.request.attributes.get('_route') %}
-{% set links = {
-    app_main_index: 'main.index.title',
-    app_worker_index: 'worker.index.title',
-    app_job_index: 'job.index.title',
-} %}
+
 <nav class="navbar">
     <ul class="navbar__list">
-        {% for route, message in links %}
+        {% for route, message in navbar_links() %}
         {% set activeClass = route == active ? ' navbar__link--active' %}
         <li>
             <a class="navbar__link{{ activeClass }}" href="{{ path(route) }}">
