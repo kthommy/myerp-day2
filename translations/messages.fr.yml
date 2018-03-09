@@ -5,6 +5,7 @@ main:
     index:
         title: Accueil
         welcome: Bienvenue sur mon super ERP, %name% !
+        user: utilisateur
 
 worker:
     index:

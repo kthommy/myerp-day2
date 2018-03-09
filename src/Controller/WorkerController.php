@@ -60,12 +60,15 @@ class WorkerController extends Controller
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            $manager->persist($form->getData());
-            $manager->flush();
+            $worker = $form->getData();
             
+            $manager->persist();
+            $manager->flush();
             $this->addFlash('success', 'worker.flash.saved');
             
-            return $this->redirectToRoute('app_worker_index');
+            return $this->redirectToRoute('app_worker_read', [
+                'id' => $worker->getId(),
+            ]);
         }
         
         return $this->render('worker/create.html.twig', [
@@ -98,7 +101,9 @@ class WorkerController extends Controller
             
             $this->addFlash('success', 'worker.flash.updated');
             
-            return $this->redirectToRoute('app_worker_index');
+            return $this->redirectToRoute('app_worker_read', [
+                'id' => $worker->getId(),
+            ]);
         }
         
         return $this->render('worker/create.html.twig', [
