@@ -77,3 +77,15 @@
   .table__form {
     display: inline;
   }
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 15rem);
+}
+  .form__input, .form__label {
+    margin: 1rem;
+  }
+    .form__input--submit {
+      margin-left: 16rem;
+      width: 13rem;
+    }
