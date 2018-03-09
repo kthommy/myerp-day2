@@ -5,12 +5,10 @@
 {% endblock %}
 
 {% block body %}
-
 {{ form_start(form) }}
     {{ form_widget(form) }}
     <input type="submit" value="{{ 'worker.action.create' | trans }}" />
 {{ form_end(form) }}
-
 {% endblock %}
 
 {% block stylesheets %}

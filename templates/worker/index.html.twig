@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block body %}
+{% if is_granted('ROLE_MANAGER') %}
 <a class="erp__link erp__link--main" href="{{ path('app_worker_create') }}">
     {{ 'worker.action.create' | trans }}
 </a>
+{% endif %}
 <table class="table">
     <thead>
         <tr>
@@ -39,6 +41,7 @@
                     href="{{ path('app_worker_edit', {id: worker.id}) }}">
                     {{ 'worker.action.edit' | trans }}
                 </a>
+                {% if is_granted('ROLE_MANAGER') %}
                 {{ form_start(form, {
                     attr: {class: 'table__form'},
                     action: path('app_worker_delete', {id: worker.id}),
@@ -49,6 +52,7 @@
                         value="{{ 'worker.action.delete' | trans }}"
                     />
                 {{ form_end(form) }}
+                {% endif %}
             </td>
         </tr>
         {% endfor %}

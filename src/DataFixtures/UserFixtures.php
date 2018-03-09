@@ -4,19 +4,35 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class UserFixtures extends Fixture
+class UserFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $user = (new User())
-            ->setUsername('kthommy')
+        $usernames = ['Employé', 'Responsable'];
+        
+        foreach ($usernames as $i => $username) {
+            $user = (new User())
+            ->setUsername($username)
             ->setPassword(
                 password_hash('secret', PASSWORD_BCRYPT, ['cost' => 12])
-            );
-
-        $manager->persist($user);
+            )
+            ->setWorker($this->getReference("worker-$i"));
+            
+            if ($username === 'Responsable') {
+                $user->setRoles(['ROLE_MANAGER']);
+            }
+            
+            $manager->persist($user);
+        }
+        
         $manager->flush();
+    }
+    
+    public function getDependencies(): array
+    {
+        return [WorkerFixtures::class];
     }
 }

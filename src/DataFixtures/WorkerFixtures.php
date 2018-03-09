@@ -11,13 +11,19 @@ class WorkerFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $worker = (new Worker())
-          ->setLastName('Gruh')
-          ->setFirstName('Jean')
-          ->setWorkingTime('23.5')
-          ->setJob($this->getReference('job-0'));
+        $firstNames = ['Georges', 'Vincent'];
         
-        $manager->persist($worker);
+        foreach ($firstNames as $i => $firstName) {
+            $worker = (new Worker())
+                ->setLastName('Boudin')
+                ->setFirstName($firstName)
+                ->setWorkingTime('23.5')
+                ->setJob($this->getReference("job-$i"));
+            
+            $this->addReference("worker-$i", $worker);
+            $manager->persist($worker);
+        }
+        
         $manager->flush();
     }
     

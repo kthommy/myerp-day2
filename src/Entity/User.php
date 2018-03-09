@@ -18,11 +18,11 @@ class User implements UserInterface
     private $id = 0;
 
     /**
-     * @var string[]
      * @ORM\Column(type="json_array")
      *
+     * @var string[]
      */
-    private $roles = ['ROLE_USER'];
+    private $roles = ['ROLE_WORKER'];
     
     /**
      * @var string
@@ -41,6 +41,13 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $username = '';
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Worker")
+     * 
+     * @var Worker
+     */
+    private $worker;
     
     /**
      * @return string[]
@@ -110,6 +117,25 @@ class User implements UserInterface
     public function setUsername(string $username): UserInterface
     {
         $this->username = $username;
+        
+        return $this;
+    }
+    
+    /**
+     * @return Worker
+     */
+    public function getWorker(): Worker
+    {
+        return $this->worker;
+    }
+    
+    /**
+     * @param Worker $worker
+     * @return UserInterface
+     */
+    public function setWorker(Worker $worker): UserInterface
+    {
+        $this->worker = $worker;
         
         return $this;
     }
